@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hellbent | Ben Ho</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-detail-section { padding: 8rem 2rem 4rem; max-width: 1000px; margin: 0 auto; }
+        .project-header-img { width: 100%; max-height: 450px; object-fit: cover; border-radius: 8px; border: 1px solid #334155; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .project-meta { display: flex; gap: 2rem; margin-bottom: 2rem; color: var(--text-muted); border-bottom: 1px solid #334155; padding-bottom: 1.5rem; flex-wrap: wrap; }
+        .meta-item strong { color: var(--text-main); display: block; margin-bottom: 0.25rem; }
+        .project-body h3 { color: var(--accent-color); margin: 3rem 0 1rem; font-size: 1.5rem; }
+        .project-body ul { margin-left: 1.5rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .project-body li { margin-bottom: 0.75rem; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        .back-link:hover { color: var(--accent-hover); }
+        
+        /* New Gallery Styles */
+        .ui-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem; margin-bottom: 2rem; }
+        .ui-item { background-color: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid #334155; }
+        .ui-item img { width: 100%; height: auto; border-radius: 4px; border: 1px solid #111; margin-bottom: 1rem; }
+        .ui-item p { text-align: center; font-size: 0.95rem; font-weight: 500; color: var(--text-main); margin-bottom: 0.25rem; }
+        .ui-item span { display: block; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><span>[</span>Ben Ho<span>]</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#projects">Back to Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="project-detail-section">
+        <a href="index.html#projects" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+        
+        <img src="Header.png" alt="Hellbent Action RPG" class="project-header-img">
+        
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Hellbent</h1>
+        
+        <div class="project-meta">
+            <div class="meta-item">
+                <strong>Role</strong>
+                Gameplay & UI/UX Programmer
+            </div>
+            <div class="meta-item">
+                <strong>Engine & Tools</strong>
+                Unity, C#, URP
+            </div>
+            <div class="meta-item">
+                <strong>Status</strong>
+                In Development
+            </div>
+        </div>
+
+        <div class="project-body">
+            <p><strong>Hellbent</strong> is an action RPG emphasizing complex combat mechanics, deep modular equipment, and challenging boss encounters. As a core programmer on the project, my responsibilities span both the underlying gameplay architecture and the player-facing user interfaces.</p>
+
+            <h3>Key Contributions</h3>
+            <ul>
+                <li><strong>Controller Support:</strong> Implemented comprehensive controller support, ensuring seamless input mapping and intuitive navigation across all gameplay and menu systems.</li>
+                <li><strong>Modular Equipment Systems:</strong> Developed scalable inventory and equipment systems that allow for dynamic gear swapping and stat adjustments during gameplay.</li>
+                <li><strong>Advanced UI/UX Implementation:</strong> Built responsive and intuitive user interfaces for inventory management, player stats, and combat HUDs.</li>
+                <li><strong>International Localization:</strong> Engineered robust localization systems utilizing the Unity Localization package to seamlessly support multiple languages, including German, Japanese, and Simplified Chinese for global accessibility.</li>
+            </ul>
+
+            <h3>UI/UX Evolution</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">A major focus of my work involved iterating on the game's interface to improve player clarity and thematic consistency. Below is a comparison showing the transition from early functional blockouts to the finalized, stylized UI.</p>
+
+            <div class="ui-gallery">
+                <div class="ui-item">
+                    <img src="before1.jpg" alt="Early Settings Menu Prototype">
+                    <p>Settings Menu (Prototype)</p>
+                    <span>Early layout focusing on basic functionality and logic.</span>
+                </div>
+                <div class="ui-item">
+                    <img src="image2.png" alt="Final Settings Menu">
+                    <p>Settings Menu (Refined)</p>
+                    <span>Final iteration featuring custom sliders, parchment aesthetics, and clear typography.</span>
+                </div>
+            </div>
+
+            <div class="ui-gallery">
+                <div class="ui-item">
+                    <img src="before2.jpg" alt="Early Gauntlet Menu Prototype">
+                    <p>Equipment Menu (Prototype)</p>
+                    <span>Initial wireframe utilizing standard gray-box panels.</span>
+                </div>
+                <div class="ui-item">
+                    <img src="image1.png" alt="Final Gauntlet Menu">
+                    <p>Equipment Menu (Refined)</p>
+                    <span>Fully integrated visual equipment system featuring modular gem slotting directly on the gauntlet model.</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center;">
+                <a href="https://store.steampowered.com/app/4694770/HELLBENT/" target="_blank" class="btn primary-btn"><i class="fa-brands fa-steam"></i> View on Steam</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-links">
+            <a href="https://github.com/benho612" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/ben-ho-4857002bb/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:hobenson57@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="copyright">&copy; 2026 Ben Ho. Built with passion.</p>
+    </footer>
+
+</body>
+</html>

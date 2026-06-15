@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solais | Ben Ho</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-detail-section { padding: 8rem 2rem 4rem; max-width: 1000px; margin: 0 auto; }
+        .project-header-img { width: 100%; max-height: 450px; object-fit: cover; border-radius: 8px; border: 1px solid #334155; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .project-meta { display: flex; gap: 2rem; margin-bottom: 2rem; color: var(--text-muted); border-bottom: 1px solid #334155; padding-bottom: 1.5rem; }
+        .meta-item strong { color: var(--text-main); display: block; margin-bottom: 0.25rem; }
+        .project-body h3 { color: var(--accent-color); margin: 2rem 0 1rem; font-size: 1.5rem; }
+        .project-body ul { margin-left: 1.5rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .project-body li { margin-bottom: 0.75rem; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        .back-link:hover { color: var(--accent-hover); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><span>[</span>Ben Ho<span>]</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#projects">Back to Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="project-detail-section">
+        <a href="index.html#projects" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+        
+        <img src="Solais.png" alt="Solais Puzzle Adventure" class="project-header-img">
+        
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Solais</h1>
+        
+        <div class="project-meta">
+            <div class="meta-item">
+                <strong>Role</strong>
+                Programmer & Co-Designer
+            </div>
+            <div class="meta-item">
+                <strong>Engine & Tools</strong>
+                Godot, GDScript
+            </div>
+            <div class="meta-item">
+                <strong>Context</strong>
+                1-Month Game Jam (Group Project, 2025)
+            </div>
+        </div>
+
+        <div class="project-body">
+            <p><strong>Solais</strong> is a moody, narrative-driven puzzle adventure conceptualized and developed entirely within a one-month Game Jam timeline. The game focuses on atmosphere, environmental storytelling, and methodical puzzle-solving mechanics.</p>
+
+            <h3>Key Contributions</h3>
+            <ul>
+                <li><strong>Core Programming:</strong> Engineered the foundational gameplay systems using GDScript within the Godot engine.</li>
+                <li><strong>Interactive Systems:</strong> Implemented robust environmental interactions and integrated dialogue systems to drive the game's narrative forward.</li>
+                <li><strong>Level & Visual Design:</strong> Collaborated closely with the team on level layouts and establishing the game's visual direction to ensure a cohesive and immersive atmosphere.</li>
+                <li><strong>Gameplay Tuning:</strong> Continuously iterated on puzzles and movement mechanics throughout the month to balance pacing and player clarity.</li>
+            </ul>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <a href="https://cybersugarstudios.itch.io/solais" target="_blank" class="btn primary-btn"><i class="fa-brands fa-itch-io"></i> Play on Itch.io</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-links">
+            <a href="https://github.com/benho612" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/ben-ho-4857002bb/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:hobenson57@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="copyright">&copy; 2026 Ben Ho. Built with passion.</p>
+    </footer>
+
+</body>
+</html>
