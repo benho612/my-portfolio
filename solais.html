@@ -9,13 +9,20 @@
     <style>
         .project-detail-section { padding: 8rem 2rem 4rem; max-width: 1000px; margin: 0 auto; }
         .project-header-img { width: 100%; max-height: 450px; object-fit: cover; border-radius: 8px; border: 1px solid #334155; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .project-meta { display: flex; gap: 2rem; margin-bottom: 2rem; color: var(--text-muted); border-bottom: 1px solid #334155; padding-bottom: 1.5rem; }
+        .project-meta { display: flex; gap: 2rem; margin-bottom: 2rem; color: var(--text-muted); border-bottom: 1px solid #334155; padding-bottom: 1.5rem; flex-wrap: wrap; }
         .meta-item strong { color: var(--text-main); display: block; margin-bottom: 0.25rem; }
         .project-body h3 { color: var(--accent-color); margin: 2rem 0 1rem; font-size: 1.5rem; }
         .project-body ul { margin-left: 1.5rem; color: var(--text-muted); margin-bottom: 2rem; }
         .project-body li { margin-bottom: 0.75rem; }
         .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent-color); text-decoration: none; font-weight: 600; }
         .back-link:hover { color: var(--accent-hover); }
+
+        /* Video Embed Styles */
+        .video-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem; margin-bottom: 2rem; }
+        .video-item { background-color: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid #334155; display: flex; flex-direction: column; }
+        .video-item iframe { width: 100%; aspect-ratio: 16/9; border-radius: 4px; border: none; margin-bottom: 1rem; }
+        .video-item p { text-align: center; font-size: 0.95rem; font-weight: 500; color: var(--text-main); margin-bottom: 0.25rem; }
+        .video-item span { display: block; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
     </style>
 </head>
 <body>
@@ -39,30 +46,57 @@
         <div class="project-meta">
             <div class="meta-item">
                 <strong>Role</strong>
-                Programmer & Co-Designer
+                Gameplay Designer, Dialogue Designer & Programmer
             </div>
             <div class="meta-item">
                 <strong>Engine & Tools</strong>
-                Godot, GDScript
+                Godot, GDScript, Dialogic
             </div>
             <div class="meta-item">
                 <strong>Context</strong>
-                1-Month Game Jam (Group Project, 2025)
+                2025 GitHub GameOff (1-Month Group Project)
             </div>
         </div>
 
         <div class="project-body">
-            <p><strong>Solais</strong> is a moody, narrative-driven puzzle adventure conceptualized and developed entirely within a one-month Game Jam timeline. The game focuses on atmosphere, environmental storytelling, and methodical puzzle-solving mechanics.</p>
+            <p><strong>Solais</strong> is a narrative-driven game taking its dramatic foundation from the tragic real-life events at the Fair Isle Lighthouse. Step into the unforgiving landscape of WWII Scotland as a Scottish Lighthouse Keeper. Your duty is not just to maintain the light, but to guard your family against German attacks and the encroaching horrors of war.</p>
 
-            <h3>Key Contributions</h3>
+            <h3>My Contributions</h3>
             <ul>
-                <li><strong>Core Programming:</strong> Engineered the foundational gameplay systems using GDScript within the Godot engine.</li>
-                <li><strong>Interactive Systems:</strong> Implemented robust environmental interactions and integrated dialogue systems to drive the game's narrative forward.</li>
-                <li><strong>Level & Visual Design:</strong> Collaborated closely with the team on level layouts and establishing the game's visual direction to ensure a cohesive and immersive atmosphere.</li>
-                <li><strong>Gameplay Tuning:</strong> Continuously iterated on puzzles and movement mechanics throughout the month to balance pacing and player clarity.</li>
+                <li><strong>Dialogue Systems & Implementation:</strong> Architected the narrative branching system across the 5 in-game days, where player choices directly impact the fate of the family and lead to one of two distinct endings. I utilized the <strong>Dialogic</strong> plugin to handle complex conversational logic, enabling essential features such as text fast-forwarding and seamless synchronization with the game's voice-acted lines.</li>
+                <li><strong>Gameplay Design:</strong> Designed and implemented the core Morse code mechanics to fit the game's historical setting and tension.</li>
+                <li><strong>Systems Programming:</strong> Engineered the game's save and load functionality, and collaborated closely with the main gameplay programmer to build out the robust task and quest tracking systems.</li>
             </ul>
 
-            <div style="margin-top: 3rem; text-align: center;">
+            <h3>System Showcases</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Below are demonstrations of the specific mechanics and systems I programmed and designed to elevate the game's immersion.</p>
+            
+            <div class="video-gallery">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/viSp-zvFkGY" title="Solais Dialogue System Integration" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Dynamic Dialogue Integration</p>
+                    <span>Showcasing the Dialogic implementation, specifically highlighting how the text rendering speed synchronizes seamlessly with the custom voice acting.</span>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/yJUo5Kq0ovY" title="Solais Morse Code Minigame" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Morse Code Minigame</p>
+                    <span>A demonstration of the core Morse code gameplay loop, designed to fit the historical setting and build tension.</span>
+                </div>
+            </div>
+
+            <h3>Gameplay & Controls</h3>
+            <ul>
+                <li><strong>Movement & Navigation:</strong> Navigate the lighthouse interior using WASD or Arrow Keys. Access the lighthouse Map via the M key and review current objectives using the Q key.</li>
+                <li><strong>Interaction:</strong> Seamless environmental interaction handled with the E and R keys.</li>
+                <li><strong>Dialogue:</strong> Advance conversation with any input (Spacebar, Enter, or Mouse Click).</li>
+            </ul>
+
+            <h3>Development & Theme Interpretation</h3>
+            <p>Solais was developed in exactly one month as a submission for the <strong>2025 GitHub GameOff</strong> by a dedicated 7-person team (alongside voice actors and an independent musician). We pride ourselves on originality: <strong>all art, music, voiceovers, writing, and programming were created entirely by our team, with absolutely no premade assets used.</strong></p>
+            
+            <p>Our interpretation of the jam's theme—<strong>"Waves"</strong>—went beyond the literal harsh Scottish ocean. <em>Solais</em> (Scottish Gaelic for "light") leans heavily into the concept of light waves as a central design pillar, and even features a specifically wave-oriented minigame.</p>
+
+            <div style="margin-top: 4rem; text-align: center;">
                 <a href="https://cybersugarstudios.itch.io/solais" target="_blank" class="btn primary-btn"><i class="fa-brands fa-itch-io"></i> Play on Itch.io</a>
             </div>
         </div>

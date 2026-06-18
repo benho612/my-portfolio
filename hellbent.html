@@ -17,12 +17,19 @@
         .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent-color); text-decoration: none; font-weight: 600; }
         .back-link:hover { color: var(--accent-hover); }
         
-        /* New Gallery Styles */
+        /* Gallery Styles */
         .ui-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem; margin-bottom: 2rem; }
         .ui-item { background-color: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid #334155; }
         .ui-item img { width: 100%; height: auto; border-radius: 4px; border: 1px solid #111; margin-bottom: 1rem; }
         .ui-item p { text-align: center; font-size: 0.95rem; font-weight: 500; color: var(--text-main); margin-bottom: 0.25rem; }
         .ui-item span { display: block; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Video Embed Styles */
+        .video-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem; margin-bottom: 2rem; }
+        .video-item { background-color: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid #334155; display: flex; flex-direction: column; }
+        .video-item iframe { width: 100%; aspect-ratio: 16/9; border-radius: 4px; border: none; margin-bottom: 1rem; }
+        .video-item p { text-align: center; font-size: 0.95rem; font-weight: 500; color: var(--text-main); margin-bottom: 0.25rem; }
+        .video-item span { display: block; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
     </style>
 </head>
 <body>
@@ -54,12 +61,16 @@
             </div>
             <div class="meta-item">
                 <strong>Status</strong>
-                In Development
+                Ongoing Development
             </div>
         </div>
 
         <div class="project-body">
             <p><strong>Hellbent</strong> is an action RPG emphasizing complex combat mechanics, deep modular equipment, and challenging boss encounters. As a core programmer on the project, my responsibilities span both the underlying gameplay architecture and the player-facing user interfaces.</p>
+
+            <div style="margin: 3rem 0;">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/2W4Hzh22zmk" title="Hellbent Gameplay Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></iframe>
+            </div>
 
             <h3>Key Contributions</h3>
             <ul>
@@ -97,6 +108,41 @@
                     <span>Fully integrated visual equipment system featuring modular gem slotting directly on the gauntlet model.</span>
                 </div>
             </div>
+
+            <h3>Dynamic Interface & Player Feedback</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Beyond static layouts, I programmed dynamic UI behaviors to enhance immersion and provide clear, unobtrusive player feedback.</p>
+
+            <div class="video-gallery">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/NLisxtPjLh0" title="Hints Animations" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Interactive Hint Animations</p>
+                    <span>Contextual UI animations designed to guide the player without interrupting the flow of gameplay.</span>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/pJl93MFPJLc" title="Dynamic HUD Fading" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Dynamic HUD Fading</p>
+                    <span>Programmed the combat HUD to dynamically disappear during safe exploration to maintain a clean, cinematic view.</span>
+                </div>
+            </div>
+
+            <h3>Advanced UI Systems: Localization & Keybinds</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Building scalable architecture is just as important as visual design. Below is a look at the robust systems I engineered for international localization and dynamic input mapping.</p>
+
+            <div class="video-gallery">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/v3QY4Hph9YU" title="International Localization System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Seamless Localization</p>
+                    <span>Demonstrating the UI dynamically adapting to different languages (including Asian character sets) without breaking the layout constraints.</span>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/_MgPmrFtrSk" title="Keybinds & Input Mapping" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p>Dynamic Input Mapping</p>
+                    <span>A robust control mapping system that allows players to seamlessly rebind actions for both keyboard/mouse and supported controllers.</span>
+                </div>
+            </div>
+
+            <h3>Ongoing Development & Next Steps</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Hellbent is an active, ongoing project. Moving forward, my primary focus is expanding the game's inclusive design by implementing broader accessibility features. Additionally, I am working on integrating custom animated UI components and polishing menu interactions with advanced tweening transitions to ensure the interface feels as fluid and responsive as the combat itself.</p>
 
             <div style="margin-top: 4rem; text-align: center;">
                 <a href="https://store.steampowered.com/app/4694770/HELLBENT/" target="_blank" class="btn primary-btn"><i class="fa-brands fa-steam"></i> View on Steam</a>
