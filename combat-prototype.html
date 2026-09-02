@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combat Prototype | Ben Ho</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-detail-section { padding: 8rem 2rem 4rem; max-width: 1000px; margin: 0 auto; }
+        .project-header-img { width: 100%; height: 260px; border-radius: 8px; border: 1px solid #334155; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); display: flex; align-items: center; justify-content: center; color: var(--accent-color); }
+        .project-meta { display: flex; gap: 2rem; margin-bottom: 2rem; color: var(--text-muted); border-bottom: 1px solid #334155; padding-bottom: 1.5rem; flex-wrap: wrap; }
+        .meta-item strong { color: var(--text-main); display: block; margin-bottom: 0.25rem; }
+        .project-body h3 { color: var(--accent-color); margin: 2.5rem 0 1rem; font-size: 1.5rem; }
+        .project-body h4 { color: var(--text-main); margin: 1.5rem 0 0.5rem; font-size: 1.1rem; }
+        .project-body p { margin-bottom: 1rem; }
+        .project-body ul { margin-left: 1.5rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .project-body li { margin-bottom: 0.6rem; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        .back-link:hover { color: var(--accent-hover); }
+
+        .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 1.5rem 0 2rem; }
+        .pillar-card { background-color: var(--card-bg); padding: 1.5rem; border-radius: 8px; border: 1px solid #334155; }
+        .pillar-card i { color: var(--accent-color); font-size: 1.4rem; margin-bottom: 0.75rem; display: block; }
+        .pillar-card h4 { margin: 0 0 0.5rem; color: var(--text-main); }
+        .pillar-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0; }
+
+        .status-banner { background-color: var(--card-bg); border: 1px solid var(--accent-color); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; color: var(--text-muted); }
+        .status-banner strong { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><span>[</span>Ben Ho<span>]</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#projects">Back to Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="project-detail-section">
+        <a href="index.html#projects" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+
+        <div class="project-header-img"><i class="fa-solid fa-khanda fa-4x"></i></div>
+
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Combat Prototype</h1>
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <strong>Role</strong>
+                Solo Game &amp; Systems Designer
+            </div>
+            <div class="meta-item">
+                <strong>Engine &amp; Tools</strong>
+                Unity (URP), C#, ScriptableObjects
+            </div>
+            <div class="meta-item">
+                <strong>Status</strong>
+                Design Document — Pre-production
+            </div>
+        </div>
+
+        <div class="status-banner">
+            <strong>Currently in design.</strong> This is an original systems-design document I'm authoring for an SAO-inspired co-op action combat game, ahead of any prototype build. It's a personal design exercise in replacing hotbar combat with execution-driven combat, and in designing raid encounters that stay unpredictable without feeling unfair.
+        </div>
+
+        <div class="project-body">
+            <h3>Vision</h3>
+            <p>The core pitch: pressing a button to trigger a pre-scripted ability is boring. This design instead makes the player's own input skill — directional aiming, timed holds, typed or spoken commands — the thing that determines the outcome of an attack, closer to <strong>Kingdom Come: Deliverance</strong>'s combat than a traditional MMO hotbar. The project started as a full always-on MMORPG concept; after weighing what's actually buildable at indie scale, I narrowed the target to <strong>session-based co-op</strong> (2–8 players, matchmade or friends-only instanced encounters with a persistent crafting hub) — structurally closer to Monster Hunter or Deep Rock Galactic than to WoW. The core combat and co-op mechanics below were designed to support that scope without any redesign, keeping a larger persistent world open as a future expansion rather than the starting bet.</p>
+
+            <h3>Three Combat Styles, One Philosophy</h3>
+            <p>Every weapon class is designed around the same idea — skill expression comes from execution, not from a rotation — but each style earns that skill expression differently.</p>
+
+            <div class="pillar-grid">
+                <div class="pillar-card">
+                    <i class="fa-solid fa-khanda"></i>
+                    <h4>Melee — Directional &amp; Sword Arts</h4>
+                    <p>Lock-on reads directional input relative to the target, not the camera. Holding an attack for ~2 seconds charges an uninterruptible Sword Art. Blocking is either omnidirectional (Sword &amp; Shield, Greatsword) or directional, For Honor-style (Rapier, single-hand sword) — the same directional guard that powers the co-op Guard Switch.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h4>Archery — Loadout-Driven Ranged</h4>
+                    <p>Free-aim, no QTEs — an early QTE-based draft was cut because it tested reflexes, not aim. Drawing is an analog hold with stamina-based sway, so holding indefinitely doesn't guarantee a clean shot. A three-layer loadout (bow chassis, modular components, ammo effects) gives archery its own build space, positioned as a glass cannon: highest raw damage, no personal block, genuinely dependent on a melee ally for cover.</p>
+                </div>
+                <div class="pillar-card">
+                    <i class="fa-solid fa-wand-sparkles"></i>
+                    <h4>Magic — Voice &amp; Text Casting</h4>
+                    <p>Spells are constructed live by combining recognized keywords (base elements + modifiers), spoken or typed, parsed against a modular C# keyword dictionary. Casting roots the player in place, matching an FFXIV/WoW hard-cast bar — a damage-threshold interrupt system, plus mid-fight spell storage, turns that vulnerability into a real risk/reward loop.</p>
+                </div>
+            </div>
+
+            <h3>Co-op: The Switch Mechanic</h3>
+            <p>The centerpiece cooperative system, and the part of the design I'm most invested in: deliberate, physical two-player coordination rather than a passive stat buff. Compared to a solo Dodge (full avoidance, precise personal timing) or Block (partial mitigation, forgiving timing), a Switch trades individual execution skill for team-coordination skill — harder to land, bigger payoff, and it always grants a guaranteed aggro steal.</p>
+            <ul>
+                <li><strong>Guard Switch (reactive):</strong> a tanking or casting ally calls for help against an attack they can't survive or that would interrupt their cast; a second player must react within a timing window and guard in the matching direction to intercept it.</li>
+                <li><strong>Vanguard Switch (proactive):</strong> a flanking ally dashes in and, once in range, gets grabbed and thrown into position by the player up front — a repositioning/engage tool rather than an emergency save.</li>
+            </ul>
+
+            <h3>Raid Design: Controlled Randomness</h3>
+            <p>A direct response to a critique I have of FFXIV/WoW/Guild Wars 2-style raid design: fights that are fully memorizable become a spreadsheet exercise rather than a live read of the boss. Bosses here randomly select from a pool of viable attacks instead of following a fixed script, while target selection stays logical and readable (highest aggro, or furthest player) — unpredictable, not unfair. Gear also shifts away from boss drop tables toward crafting materials, making dedicated crafter players load-bearing to progression rather than optional — which raises its own design problem (a rare drop is useless if the right crafter is offline) that I'm resolving with an asynchronous commission-board system.</p>
+
+            <h3>Open Design Questions</h3>
+            <p>Documenting what isn't settled is as much a part of this GDD as what is. A few of the open threads I'm actively iterating on:</p>
+            <ul>
+                <li>Whether Determination (the penalty for using an off-proficiency weapon) is raised through general stat leveling or per-weapon proficiency gained from use.</li>
+                <li>Whether a Sword Art roots the player in place while it executes, or allows movement.</li>
+                <li>Exact values for the boss stagger/break meter, and whether melee, archery, and magic contribute to it equally.</li>
+                <li>How magic's keyword parsing should adapt to languages with different word order (German, Japanese, Simplified Chinese) for localization.</li>
+                <li>Whether the first playable prototype should be a whitebox dummy room or a small scripted boss encounter.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-links">
+            <a href="https://github.com/benho612" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/ben-ho-4857002bb/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:hobenson57@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="copyright">&copy; 2026 Ben Ho. Built with passion.</p>
+    </footer>
+
+</body>
+</html>
