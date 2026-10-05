@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDEV26 | Ben Ho</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-detail-section { padding: 8rem 2rem 4rem; max-width: 1000px; margin: 0 auto; }
+        .project-header-img { width: 100%; max-height: 450px; object-fit: cover; border-radius: 8px; border: 1px solid #334155; margin-bottom: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .project-meta { display: flex; gap: 2rem; margin-bottom: 2rem; color: var(--text-muted); border-bottom: 1px solid #334155; padding-bottom: 1.5rem; flex-wrap: wrap; }
+        .meta-item strong { color: var(--text-main); display: block; margin-bottom: 0.25rem; }
+        .project-body h3 { color: var(--accent-color); margin: 2rem 0 1rem; font-size: 1.5rem; }
+        .project-body ul { margin-left: 1.5rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .project-body li { margin-bottom: 0.75rem; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        .back-link:hover { color: var(--accent-hover); }
+
+        /* Screenshot Styles */
+        .shot-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1.5rem; margin-bottom: 2rem; }
+        .shot-item { background-color: var(--card-bg); padding: 1rem; border-radius: 8px; border: 1px solid #334155; }
+        .shot-item img { width: 100%; border-radius: 4px; margin-bottom: 1rem; display: block; }
+        .shot-item p { text-align: center; font-size: 0.95rem; font-weight: 500; color: var(--text-main); margin-bottom: 0.25rem; }
+        .shot-item span { display: block; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo"><span>[</span>Ben Ho<span>]</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#projects">Back to Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="project-detail-section">
+        <a href="index.html#projects" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+
+        <img src="mdev26-ledge-25d.png" alt="MDEV26 puzzle platformer in 2.5D" class="project-header-img">
+
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">MDEV26: In the Middle</h1>
+
+        <div class="project-meta">
+            <div class="meta-item">
+                <strong>Role</strong>
+                Core Mechanics, Interaction & Level Designer / Programmer
+            </div>
+            <div class="meta-item">
+                <strong>Engine & Tools</strong>
+                Godot 4.8, GDScript
+            </div>
+            <div class="meta-item">
+                <strong>Context</strong>
+                10-Day Game Jam (Group Project), theme "In the Middle"
+            </div>
+        </div>
+
+        <div class="project-body">
+            <p><strong>MDEV26</strong> is a puzzle platformer built around one button. Press <strong>Q</strong> and the whole level switches between a <strong>2.5D</strong> world, where you can walk in depth, and a flattened <strong>2D</strong> world, where depth is ignored. Gaps you cannot cross in one view become walkable in the other, so the player is always "in the middle" of two ways of seeing the same level.</p>
+
+            <h3>My Contributions</h3>
+            <ul>
+                <li><strong>The 2.5D / 2D switch:</strong> Designed and built the core mechanic. The same level geometry lives on two collision layers: the real world, and a copy stretched along the depth axis for 2D. The player only swaps a collision mask and a depth lock, so any character controller works with it. Switching back to 2.5D snaps the player onto the real depth of the floor below, even in mid-air.</li>
+                <li><strong>Interaction system:</strong> Keys, locked doors and chests, a key inventory with a HUD, and floating interact prompts. Objects can belong to one view, so a key can exist only in 2D (hidden in a painting) and a vase can hide a key that is only visible from behind, using a line-of-sight check.</li>
+                <li><strong>Vanishing push boxes:</strong> Boxes the player pushes onto pressure plates that open doors. A blue box exists only in 2.5D and a red box only in 2D. In the other view it becomes a frozen ghost, so its position is remembered when you switch back.</li>
+                <li><strong>Level design:</strong> Designed four levels that teach one idea at a time (keys, vanishing boxes, carrying a plank across lanes), ending with Level 4: one continuous level where every mechanic feeds the next, with decoy hiding spots and a backtrack to open a chest for the exit key.</li>
+                <li><strong>Game feel & flow:</strong> A level-complete transition that stops the player, zooms into the exit flag and fades into the results screen, plus a joke main menu where pressing the forbidden Q key switches the menu to 2.5D and drops the Play button onto Quit.</li>
+                <li><strong>Reusable prefabs:</strong> Built doors, plates, boxes, keys, vases and the exit as drag-and-drop prefabs with live editor previews, so teammates could place level pieces and artist-made sprites without touching code.</li>
+                <li><strong>Automated play-through tests:</strong> Wrote headless Godot test scripts that play every level with real input (pushing, jumping, switching view mid-air) and check that shortcuts such as hopping a door or jumping a chasm do not work.</li>
+            </ul>
+
+            <h3>2.5D vs 2D</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">The same spot in Level 4 in both views. In 2D the red bridge is solid and the red box can cross it; in 2.5D the bridge is only a faint ghost.</p>
+
+            <div class="shot-gallery">
+                <div class="shot-item">
+                    <img src="mdev26-bridge-25d.png" alt="Level 4 in 2.5D">
+                    <p>2.5D view</p>
+                    <span>Depth is real. The 2D-only red bridge is a faint ghost with no collision.</span>
+                </div>
+                <div class="shot-item">
+                    <img src="mdev26-bridge-2d.png" alt="Level 4 in 2D">
+                    <p>2D view</p>
+                    <span>Depth is flattened. The red bridge is solid and the red box can be pushed across it.</span>
+                </div>
+            </div>
+
+            <div class="shot-gallery">
+                <div class="shot-item">
+                    <img src="mdev26-menu.png" alt="The main menu with a Do Not Press Q warning">
+                    <p>The "Do Not Press Q" Menu</p>
+                    <span>The warning wanders around the screen. Pressing Q anyway switches the menu to 2.5D and drops Play onto Quit.</span>
+                </div>
+            </div>
+
+            <h3>Team & Credits</h3>
+            <p>Built in 10 days by a small team. Teammates made the character controllers, the plank-carrying system, the art and the audio, and handled production; the sprites you see were drawn by our artist and wired into the prefabs above.</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="social-links">
+            <a href="https://github.com/benho612" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/ben-ho-4857002bb/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:hobenson57@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <p class="copyright">&copy; 2026 Ben Ho. Built with passion.</p>
+    </footer>
+
+</body>
+</html>
