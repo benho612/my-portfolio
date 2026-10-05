@@ -13,7 +13,7 @@
         <nav class="navbar">
             <a href="#" class="logo"><span>[</span>Ben Ho<span>]</span></a>
             <ul class="nav-links">
-                <li><a href="#hero">About</a></li>
+                <li><a href="#bio">Bio</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -26,18 +26,121 @@
 
     <section id="hero" class="hero-section">
         <div class="hero-content">
+            <p class="hero-kicker">PLAYER 1 READY</p>
             <h1>Hi, I'm <span class="highlight">Ben Ho</span></h1>
             <p>Game Developer specializing in Unity and UI/UX, studying at the University of California, Santa Cruz.</p>
+            <div class="hero-stats">
+                <span><b>CLASS</b> Game Developer</span>
+                <span><b>BASE</b> Los Angeles</span>
+                <span><b>GUILD</b> UC Santa Cruz</span>
+                <span><b>ENGINES</b> Unity / Godot</span>
+            </div>
             <div class="hero-buttons">
-                <a href="#projects" class="btn primary-btn">View My Work</a>
+                <a href="#projects" class="btn primary-btn">&#9654; Start Game</a>
                 <a href="#contact" class="btn secondary-btn">Let's Talk</a>
             </div>
         </div>
     </section>
 
+    <section id="bio" class="bio-section">
+        <h2>Player Profile</h2>
+        <div class="bio-content">
+            <figure class="bio-portrait">
+                <img src="ben-graduation.jpg" alt="Ben Ho in a UC Santa Cruz graduation gown holding a diploma and flowers">
+                <figcaption>UCSC graduation</figcaption>
+            </figure>
+            <div class="bio-text">
+                <p>I'm Ben, a game developer based in Los Angeles who loves the part of games where design and code meet: the systems, the interfaces and the little rules that decide how a game feels to play. I work mostly in Unity and Godot, and I'm finishing my studies at the University of California, Santa Cruz in 2026, after Pasadena City College, where I made the Dean's Honor list for three semesters. Before that, I was in the robotics club at Arcadia High School.</p>
+                <p>On <strong>Solais</strong> I built the branching dialogue and the Morse code minigame. On <strong>Hellbent</strong> I make combat UI, boss fights and accessibility options such as font scaling, high-contrast modes and input remapping. For the 10-day jam game <strong>MDEV26</strong> I designed a one-button switch between 2.5D and 2D and the puzzles built around it.</p>
+                <p>I grew up playing everything from MMORPGs and turn-based RPGs to MOBAs, shooters and rhythm games, and I try to bring what makes those feel good into my own work. I'm always looking for a team to build something with.</p>
+            </div>
+            <div class="bio-facts">
+                <div class="bio-fact">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                    <ul>
+                        <li>University of California, Santa Cruz (2024 - 2026)</li>
+                        <li>Pasadena City College (2021 - 2024)</li>
+                        <li>Arcadia High School (2018 - 2021)</li>
+                    </ul>
+                </div>
+                <div class="bio-fact">
+                    <h3><i class="fa-solid fa-language"></i> Languages</h3>
+                    <ul>
+                        <li>Cantonese (native)</li>
+                        <li>English</li>
+                        <li>Mandarin</li>
+                    </ul>
+                </div>
+                <div class="bio-fact">
+                    <h3><i class="fa-solid fa-dice-d20"></i> Games I Play</h3>
+                    <ul>
+                        <li>MMORPG: Final Fantasy 14, World of Warcraft</li>
+                        <li>Turn-based: Octopath Traveler, Baldur's Gate 3, Honkai: Star Rail</li>
+                        <li>Competitive: League of Legends, Overwatch, Rainbow Six Siege</li>
+                        <li>Rhythm: osu!, Muse Dash, Cytus 2</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <h3 class="photo-title">Photo Album</h3>
+        <div class="photo-strip">
+            <figure>
+                <img src="ben-game-lab.jpg" alt="Ben Ho sitting in a game lab below a huge Smash Bros. poster" loading="lazy">
+                <figcaption>Game lab</figcaption>
+            </figure>
+            <figure>
+                <img src="ben-game-room.jpg" alt="Ben Ho in a game room full of consoles, controllers and game boxes" loading="lazy">
+                <figcaption>Game room</figcaption>
+            </figure>
+            <figure>
+                <img src="ben-hallway.jpg" alt="Ben Ho in a UC Santa Cruz hallway wearing a Final Fantasy XIV shirt" loading="lazy">
+                <figcaption>On campus</figcaption>
+            </figure>
+        </div>
+    </section>
+
     <section id="projects" class="projects-section">
-        <h2>Featured Projects</h2>
+        <h2>Stage Select</h2>
         <div class="projects-grid">
+            <div class="project-card">
+                <a href="solais.html" style="text-decoration: none; color: inherit;">
+                    <div class="project-image" style="height: 200px;">
+                        <img src="Solais.png" alt="Solais Puzzle Adventure" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </a>
+                <div class="project-info">
+                    <h3><a href="solais.html" style="text-decoration: none; color: inherit;">Solais</a></h3>
+                    <p>Designed and developed a narrative-driven puzzle adventure for a one-month game jam. Implemented environmental interactions and dialogue systems.</p>
+                    <div class="tags">
+                        <span>Godot</span>
+                        <span>GDScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="solais.html"><i class="fa-solid fa-circle-info"></i> More Details</a>
+                        <a href="https://cybersugarstudios.itch.io/solais" target="_blank"><i class="fa-brands fa-itch-io"></i> Itch.io</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <a href="hellbent.html" style="text-decoration: none; color: inherit;">
+                    <div class="project-image" style="height: 200px;">
+                        <img src="Header.png" alt="Hellbent Action RPG" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </a>
+                <div class="project-info">
+                    <h3><a href="hellbent.html" style="text-decoration: none; color: inherit;">Hellbent</a></h3>
+                    <p>An action RPG where I serve as a gameplay and UI/UX programmer. Responsibilities include developing modular equipment systems, designing complex AI boss encounters—including distinctive fights against Brutus, The Demon King, and Pergius, Lord of Ruin—and implementing user interface mechanics with extensive localization support.</p>
+                    <div class="tags">
+                        <span>Unity</span>
+                        <span>C#</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="hellbent.html"><i class="fa-solid fa-circle-info"></i> More Details</a>
+                        <a href="https://store.steampowered.com/app/4694770/HELLBENT/" target="_blank"><i class="fa-brands fa-steam"></i> Steam</a>
+                    </div>
+                </div>
+            </div>
 
             <div class="project-card">
                 <a href="mdev26.html" style="text-decoration: none; color: inherit;">
@@ -75,67 +178,6 @@
                     </div>
                     <div class="project-links">
                         <a href="combat-prototype.html"><i class="fa-solid fa-circle-info"></i> More Details</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <a href="hellbent.html" style="text-decoration: none; color: inherit;">
-                    <div class="project-image" style="height: 200px;">
-                        <img src="Header.png" alt="Hellbent Action RPG" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                </a>
-                <div class="project-info">
-                    <h3><a href="hellbent.html" style="text-decoration: none; color: inherit;">Hellbent</a></h3>
-                    <p>An action RPG where I serve as a gameplay and UI/UX programmer. Responsibilities include developing modular equipment systems, designing complex AI boss encounters—including distinctive fights against Brutus, The Demon King, and Pergius, Lord of Ruin—and implementing user interface mechanics with extensive localization support.</p>
-                    <div class="tags">
-                        <span>Unity</span>
-                        <span>C#</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="hellbent.html"><i class="fa-solid fa-circle-info"></i> More Details</a>
-                        <a href="https://store.steampowered.com/app/4694770/HELLBENT/" target="_blank"><i class="fa-brands fa-steam"></i> Steam</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <a href="stealth-escape.html" style="text-decoration: none; color: inherit;">
-                    <div class="project-image">
-                        <div class="image-placeholder"><i class="fa-solid fa-user-secret fa-3x"></i></div>
-                    </div>
-                </a>
-                <div class="project-info">
-                    <h3><a href="stealth-escape.html" style="text-decoration: none; color: inherit;">Stealth Escape Prototype</a></h3>
-                    <p>Designed a top-down 3D stealth game using Unity with a custom Field-of-View visibility system. Implemented enemy AI finite-state machine with patrol, chase, and search behaviors.</p>
-                    <div class="tags">
-                        <span>Unity</span>
-                        <span>C#</span>
-                        <span>AI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="stealth-escape.html"><i class="fa-solid fa-circle-info"></i> More Details</a>
-                        <a href="#" target="_blank"><i class="fa-brands fa-github"></i> Source</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <a href="solais.html" style="text-decoration: none; color: inherit;">
-                    <div class="project-image" style="height: 200px;">
-                        <img src="Solais.png" alt="Solais Puzzle Adventure" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                </a>
-                <div class="project-info">
-                    <h3><a href="solais.html" style="text-decoration: none; color: inherit;">Solais</a></h3>
-                    <p>Designed and developed a narrative-driven puzzle adventure for a one-month game jam. Implemented environmental interactions and dialogue systems.</p>
-                    <div class="tags">
-                        <span>Godot</span>
-                        <span>GDScript</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="solais.html"><i class="fa-solid fa-circle-info"></i> More Details</a>
-                        <a href="https://cybersugarstudios.itch.io/solais" target="_blank"><i class="fa-brands fa-itch-io"></i> Itch.io</a>
                     </div>
                 </div>
             </div>

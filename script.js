@@ -1,8 +1,8 @@
-// Quick setup for mobile responsiveness if you want a burger menu later
+// Mobile menu: the burger opens and closes the links; picking a link closes it again
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.nav-links');
 
-burger.addEventListener('click', () => {
-    // Basic toggle placeholder for mobile layout extensions
-    alert("Mobile menu navigation triggered! You can link a drawer UI here.");
-});
+if (burger && nav) {
+    burger.addEventListener('click', () => nav.classList.toggle('open'));
+    nav.addEventListener('click', () => nav.classList.remove('open'));
+}
