@@ -30,6 +30,17 @@
         .video-item iframe { width: 100%; aspect-ratio: 16/9; border-radius: 4px; border: none; margin-bottom: 1rem; }
         .video-item p { text-align: center; font-size: 0.95rem; font-weight: 500; color: var(--text-main); margin-bottom: 0.25rem; }
         .video-item span { display: block; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Latest updates */
+        .ui-item.wide { grid-column: 1 / -1; }
+        .update-badge { display: inline-block; background: var(--card-bg); border: 1px solid #334155; color: var(--accent-color); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em; padding: 0.2rem 0.7rem; border-radius: 999px; margin-bottom: 0.5rem; }
+        .project-body h4 { color: var(--text-main); font-size: 1.1rem; margin: 2rem 0 0.5rem; }
+        .tuning-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0 2rem; font-size: 0.95rem; }
+        .tuning-table th, .tuning-table td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid #334155; vertical-align: top; }
+        .tuning-table th { color: var(--accent-color); font-weight: 600; }
+        .tuning-table td { color: var(--text-muted); }
+        .tuning-table td:first-child { color: var(--text-main); font-weight: 600; white-space: nowrap; }
+        .gem-icons { display: block; max-width: 420px; margin: 0 auto 1rem; image-rendering: pixelated; }
     </style>
 </head>
 <body>
@@ -77,6 +88,8 @@
                 <li><strong>Controller Support:</strong> Implemented comprehensive controller support, ensuring seamless input mapping and intuitive navigation across all gameplay and menu systems.</li>
                 <li><strong>Modular Equipment Systems:</strong> Developed scalable inventory and equipment systems that allow for dynamic gear swapping and stat adjustments during gameplay.</li>
                 <li><strong>Advanced UI/UX Implementation:</strong> Built responsive and intuitive user interfaces for inventory management, player stats, and combat HUDs.</li>
+                <li><strong>Resource &amp; Progression Systems:</strong> Designed and built a mana system, a gem quality-tier system with drag-to-merge crafting and one-time shrine upgrades, and a passive &ldquo;Attunement&rdquo; gem that changes how each elemental gauntlet fights.</li>
+                <li><strong>Game Feel &amp; Polish:</strong> Tuned hit-stop, flashes, camera nudges, rumble and slow motion into one combat feedback layer, plus themed VFX for gem arrivals, charged attacks, level-ups and the main menu.</li>
                 <li><strong>International Localization:</strong> Engineered robust localization systems utilizing the Unity Localization package to seamlessly support multiple languages, including German, Japanese, and Simplified Chinese for global accessibility.</li>
             </ul>
 
@@ -141,8 +154,158 @@
                 </div>
             </div>
 
-            <h3>Ongoing Development & Next Steps</h3>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Hellbent is an active, ongoing project. Moving forward, my primary focus is expanding the game's inclusive design by implementing broader accessibility features. Additionally, I am working on integrating custom animated UI components and polishing menu interactions with advanced tweening transitions to ensure the interface feels as fluid and responsive as the combat itself.</p>
+            <h3>Latest Updates</h3>
+            <span class="update-badge">October 2026</span>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">The past few weeks have been about turning Hellbent's moment-to-moment loop into something deeper and better-feeling: a mana economy, a crafting path for gems, a new passive gem that gives every elemental gauntlet its own fighting style, and a pass of polish across combat, menus and the first few seconds of every level. Here is what changed and how it works.</p>
+
+            <h4>Mana System &amp; HUD</h4>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Skills used to draw from the stamina pool. I added a dedicated mana resource so skill use has its own budget and the stamina bar stays about melee and dodging.</p>
+            <div class="ui-gallery">
+                <div class="ui-item wide">
+                    <img src="hellbent-hud-mana.jpg" alt="Hellbent HUD showing the new blue mana bar under the health bar" loading="lazy">
+                    <p>Health, mana and stamina in the combat HUD</p>
+                    <span>The mana bar is laid over the blue strip already baked into the HUD frame art, using the same colour, so it reads as part of the original design.</span>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Cost model:</strong> every skill (Q/E) costs the same 20 mana, because the gauntlet's element is what differentiates a skill. Unlike stamina, a cast needs the full cost, so a partly-filled pool can't cast.</li>
+                <li><strong>Regeneration:</strong> a steady rate with no delay. My first value (5/s) let players spam skills, so after playtesting I dropped it to 2/s, roughly one cast every ten seconds, which leaves room for the regeneration gem to matter.</li>
+                <li><strong>Persistence:</strong> current mana travels with the player between levels and is stored in the checkpoint save.</li>
+                <li><strong>Three new gems:</strong> <em>Arcane</em> (more maximum mana), <em>Wellspring</em> (faster regeneration) and <em>Siphon</em> (mana back on every kill). They plug into the same modifier pipeline as the existing stat gems and are wired into the Backpack prefab, so they carry across levels.</li>
+            </ul>
+
+            <h4>Gem Quality Tiers, Merging &amp; Shrines</h4>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Every gem now has a quality tier, and players can craft their way up. This gives the reward menu a second decision: take a new gem, or merge toward a stronger one.</p>
+            <div class="ui-gallery">
+                <div class="ui-item wide">
+                    <img src="hellbent-gem-tiers.jpg" alt="Three reward gems at tiers two, three and four, each with a different coloured aura" loading="lazy">
+                    <p>Tier 2, 3 and 4 gems in the reward menu</p>
+                    <span>Each quality (Rough, Polished, Flawless, Radiant, Perfect) has its own colour, a roman-numeral badge and an animated aura that gets richer the higher the tier.</span>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Scaling:</strong> a stat gem's modifiers are multiplied by its tier; skill gems have nothing to multiply, so they deal +50% skill damage per tier above one.</li>
+                <li><strong>Drag-to-merge:</strong> dropping a gem onto the same gem at the same tier merges them into the next tier, both in the reward menu and in the inventory. Anything else (different gem, different tier) is refused with feedback instead of silently replacing or &ldquo;eating&rdquo; a gem.</li>
+                <li><strong>Readable swaps:</strong> when two different gems trade places they fly across on arcs and land with a pulse, because players couldn't tell at a glance whether a swap had happened.</li>
+                <li><strong>Shrines:</strong> an interactable shrine opens an upgrade screen where the player picks one equipped gem to raise by a tier. Each shrine can be used once, and used shrines are remembered by the save system.</li>
+                <li><strong>Localization:</strong> tier names and labels live under their own string keys in the Gem table, so they never collide with a gem's own title or description, and they are translated for all four supported languages.</li>
+            </ul>
+
+            <h4>&ldquo;Hellbent&rdquo; Gem Arrivals</h4>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Reward gems used to simply drop onto the board. To match the game's name and look, they are now summoned one at a time in a burst of hellfire.</p>
+            <div class="ui-gallery">
+                <div class="ui-item">
+                    <img src="hellbent-hell-spawn.jpg" alt="Three summoning circles with rings of fire on the reward menu" loading="lazy">
+                    <p>Summoning circles</p>
+                    <span>A rune circle flickers up under a ring of fire that flares outward, hangs, then pulls back on itself dragging embers inward.</span>
+                </div>
+                <div class="ui-item">
+                    <img src="hellbent-gem-placement.jpg" alt="Reward gems resting beside the gauntlet, clear of the interface" loading="lazy">
+                    <p>Safe placement</p>
+                    <span>Gems land in the open space either side of the gauntlet, never on top of the banner, buttons or the gauntlet art.</span>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Sequence:</strong> as the ring collapses the gem is born in a flash with a small board shake, then the next gem begins 0.65 seconds later. Still three gems per reward.</li>
+                <li><strong>Built to be cheap:</strong> everything is UI images and DOTween running on unscaled time (the menu is paused), with the effect textures generated procedurally rather than hand-painted.</li>
+                <li><strong>Placement logic:</strong> the old spawn check only tested a gem's centre against small boxes. It now measures the visible art of the gauntlet, banner, buttons and description box, adds the gem's own size plus padding, and prefers positions that don't overlap other gems.</li>
+                <li><strong>Bug hunt:</strong> an extra animation played on the first gem. The level-up button was opening the menu twice in one frame (a UnityEvent and a direct call), leaving an effect playing over a gem that had already been replaced. The menu now ignores a second open in the same frame, and a new sequence cancels any one still running.</li>
+            </ul>
+
+            <h4>Combat Feel &amp; Level-Up Polish</h4>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Hits needed to feel better. I built a small feedback layer that every melee hit and skill goes through, then tuned it by playing it.</p>
+            <div class="ui-gallery">
+                <div class="ui-item wide">
+                    <img src="hellbent-level-up.jpg" alt="Close-up of the HUD with the redesigned level-up indicator and pixel-font level number" loading="lazy">
+                    <p>Redesigned level-up indicator</p>
+                    <span>A pixel-font level number and a &ldquo;LEVEL UP!&rdquo; callout that appears while a reward is waiting; the small leftover square was removed. The mana bar is partly drained here.</span>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Hit-stop &amp; flash:</strong> a brief freeze on the enemy (about 0.05s on light hits, 0.1s on heavy, 0.12s on kills) and a short white flash, applied per enemy so overlapping hits don't fight each other.</li>
+                <li><strong>Camera &amp; rumble:</strong> a small camera knock in the direction of the hit that settles in about a fifth of a second, matched controller rumble, and a slow-motion beat on the last kill of a fight.</li>
+                <li><strong>Iteration:</strong> my first take was a full-screen impact frame. It read more like a flashbang than a hit, so I cut it back, tried it only on one skill, then removed it and kept the subtler layers above.</li>
+                <li><strong>Charged heavy attacks:</strong> holding the heavy attack pulses an element-coloured glow on the striking fist that builds with the charge and bursts on release.</li>
+                <li><strong>XP bar:</strong> an animated wave runs through the fill so progress feels alive.</li>
+                <li><strong>Stuck-attack bug:</strong> if an attack animation was cut off (for example by landing mid-air attack), the player stayed locked in &ldquo;Attacking&rdquo; forever. I added a failsafe that notices the animator is back on locomotion and ends the attack.</li>
+            </ul>
+
+            <h4>The Attunement Gem: Elemental Fighting Styles</h4>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">The Projectile gem already changes with the gauntlet's element. Attunement is a new <strong>passive</strong> skill gem that does the same for melee: it empowers the basic and heavy attacks of whichever gauntlet it is socketed into, and only that gauntlet's fist.</p>
+            <div class="ui-gallery">
+                <div class="ui-item">
+                    <img src="hellbent-chain-lightning.jpg" alt="Chain lightning jumping between two enemies" loading="lazy">
+                    <p>Lightning gauntlet</p>
+                    <span>A heavy hit arcs to the nearest enemies, drawn as a jagged bolt with a flash on each target.</span>
+                </div>
+                <div class="ui-item">
+                    <img src="hellbent-frost.jpg" alt="An enemy frozen solid in an icy silhouette" loading="lazy">
+                    <p>Ice gauntlet</p>
+                    <span>Ten frost stacks freeze an enemy solid; stacks slow it on the way there.</span>
+                </div>
+            </div>
+            <img src="hellbent-attunement-gem.png" alt="The Projectile gem icon next to the violet Attunement gem icon" class="gem-icons" loading="lazy">
+            <table class="tuning-table">
+                <thead><tr><th>Gauntlet</th><th>What Attunement does</th></tr></thead>
+                <tbody>
+                    <tr><td>Fire</td><td>Basic attacks set the enemy alight: burn damage for 4 seconds that refreshes instead of stacking, without flinching the enemy.</td></tr>
+                    <tr><td>Lightning</td><td>Basic attacks chain to 2 nearby enemies (6m, 40% damage). Heavy attacks chain to 3 enemies (9m, 60% damage).</td></tr>
+                    <tr><td>Ice</td><td>Basic hits add 1 frost stack and heavy hits add 2, each stack slowing the enemy. At 10 stacks it freezes, then is briefly immune to freezing. Bosses freeze for a shorter time.</td></tr>
+                    <tr><td>Earth</td><td>Basic attacks resist interruption (40% poise damage taken). Heavy attacks take 1.5&times; longer to charge and are easier to break (160% poise damage taken).</td></tr>
+                    <tr><td>Wind</td><td>Heavy attacks charge twice as fast, wind up 25% faster and scale up to +100% damage the longer they are held (instead of +50%).</td></tr>
+                </tbody>
+            </table>
+            <ul>
+                <li><strong>Per-fist resolution:</strong> each punch resolves its own gauntlet and element, so a Fire gauntlet on one hand and a Lightning gauntlet on the other each keep their own behaviour.</li>
+                <li><strong>Tier scaling:</strong> the gem's tier lengthens freezes and strengthens burn and chain damage using the same curve as skill damage.</li>
+                <li><strong>Found a hidden bug:</strong> while building the status effects I discovered no enemy prefab actually carried the component that applies burn, chill and jolt, so existing skills had been silently doing nothing. Enemies now add it automatically, and damage-over-time ticks no longer interrupt their attacks.</li>
+                <li><strong>Content plumbing:</strong> the gem is data-driven (a passive flag on the skill gem asset), skipped by the cast and cooldown UI, restorable between levels through the Backpack, drops from the reward pool and chamber skill rewards, and is localized in four languages. Its icon is a recoloured version of the Projectile gem so the two read as one family.</li>
+            </ul>
+
+            <h4>Main Menu: Glowing Eyes &amp; Transition</h4>
+            <div class="ui-gallery">
+                <div class="ui-item">
+                    <img src="hellbent-menu.jpg" alt="The Hellbent main menu with the knight's eyes glowing red" loading="lazy">
+                    <p>Breathing red eyes</p>
+                    <span>Two slits in the knight's helm glow and fade on offset breathing cycles.</span>
+                </div>
+                <div class="ui-item">
+                    <img src="hellbent-menu-fade.jpg" alt="The main menu partway through the fade to black" loading="lazy">
+                    <p>Fade to black</p>
+                    <span>New Game and Continue fade the menu out before the level loads.</span>
+                </div>
+                <div class="ui-item">
+                    <img src="hellbent-eyes-closeup.jpg" alt="Close-up of the glowing eye slits in the knight's helmet" loading="lazy">
+                    <p>Close-up</p>
+                    <span>A bright core plus a soft additive halo, sized and rotated to match each slit in the artwork.</span>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Eyes:</strong> each eye is a core glow with a larger additive halo that swells slightly as it brightens. The two eyes start half a second apart so they never breathe in lockstep.</li>
+                <li><strong>Transition:</strong> pressing New Game or Continue blocks further input, fades a black overlay in over about 0.9 seconds, and only then starts the run or restores the checkpoint, so players can't double-fire a level load.</li>
+            </ul>
+
+            <h4>Spawn Intro &amp; Camera Fixes</h4>
+            <div class="ui-gallery">
+                <div class="ui-item">
+                    <img src="hellbent-intro-reveal.jpg" alt="The knight being revealed from the head down by the teleport effect, seen from the front" loading="lazy">
+                    <p>1. Face the player</p>
+                    <span>The camera starts in front of the character while the teleport effect reveals them from the head down.</span>
+                </div>
+                <div class="ui-item">
+                    <img src="hellbent-intro-orbit.jpg" alt="The camera sweeping around the player toward the normal view" loading="lazy">
+                    <p>2. Orbit</p>
+                    <span>After the effect the camera sweeps around the player and settles into the normal over-the-shoulder view.</span>
+                </div>
+            </div>
+            <ul>
+                <li><strong>Camera pop at level start:</strong> the camera used to spend a frame or two looking at the previous position before snapping onto the player. The spawn effect now frames the player on the very first frame and re-snaps after the level has placed them.</li>
+                <li><strong>A regression I caught:</strong> my first fix forced the camera to follow the player's root, which dropped the view a meter lower than before. I measured the old and new framing, found the camera follows a <code>CameraTarget</code> child at head height, and made the spawn code use it.</li>
+                <li><strong>Intro timing:</strong> about 1.7s for the reveal and a 1.4s eased orbit, with movement and combat locked until it finishes. The whole intro can be switched off, and its tilt and duration are exposed in the inspector.</li>
+            </ul>
+
+            <h3>Ongoing Development &amp; Next Steps</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Hellbent is an active, ongoing project, and the systems above are still being tuned through playtesting. Next up is broader accessibility support (including options for the new combat feedback and screen effects), more Attunement behaviours and shrine variants, and further polish on menu interactions with advanced tweening transitions so the interface feels as fluid and responsive as the combat itself.</p>
 
             <div style="margin-top: 4rem; text-align: center;">
                 <a href="https://store.steampowered.com/app/4694770/HELLBENT/" target="_blank" class="btn primary-btn"><i class="fa-brands fa-steam"></i> View on Steam</a>
