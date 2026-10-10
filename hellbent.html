@@ -42,18 +42,27 @@
         .tuning-table td:first-child { color: var(--text-main); font-weight: 600; white-space: nowrap; }
         .gem-icons { display: block; max-width: 420px; margin: 0 auto 1rem; image-rendering: pixelated; }
 
-        /* Table of contents: every topic is one click away; headings clear the fixed navbar when jumped to */
-        .project-body h3[id], .project-body h4[id], .toc { scroll-margin-top: 6rem; }
-        .toc { background-color: var(--card-bg); border: 1px solid #334155; border-radius: 8px; padding: 1.25rem 1.5rem; margin: 2rem 0; }
-        .toc-title { color: var(--accent-color); font-weight: 600; margin-bottom: 0.75rem; }
-        .toc ol { margin: 0 0 0 1.4rem; color: var(--text-muted); }
-        .toc ol ol { margin-top: 0.35rem; margin-bottom: 0.35rem; list-style-type: lower-alpha; }
-        .toc li { margin-bottom: 0.35rem; }
-        .toc a { color: var(--text-main); text-decoration: none; }
-        .toc a:hover { color: var(--accent-color); }
-        .toc-new { display: inline-block; margin-left: 0.4rem; padding: 0 0.5rem; border-radius: 999px; border: 1px solid var(--accent-color); color: var(--accent-color); font-size: 0.7rem; font-weight: 600; vertical-align: middle; }
-        .toc-fab { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 90; background: var(--card-bg); border: 1px solid #334155; color: var(--accent-color); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.55rem 0.9rem; border-radius: 999px; box-shadow: 0 6px 18px rgba(0,0,0,0.4); }
-        .toc-fab:hover { color: var(--accent-hover); }
+        /* Floating table of contents: fixed on the left, slides away leaving only the arrow tab */
+        .project-body h3[id], .project-body h4[id] { scroll-margin-top: 6rem; }
+        .toc-float { position: fixed; left: 0; top: 7rem; z-index: 900; display: flex; align-items: flex-start; transform: translateX(0); transition: transform 0.3s ease; }
+        .toc-float.collapsed { transform: translateX(-100%); }
+        .toc-panel { width: 270px; max-height: calc(100vh - 9rem); overflow-y: auto; background-color: var(--card-bg); border: 1px solid #334155; border-left: none; border-radius: 0 8px 8px 0; padding: 1rem 1.1rem 1rem 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .toc-title { color: var(--accent-color); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; }
+        .toc-panel ol { margin: 0 0 0 1.2rem; color: var(--text-muted); font-size: 0.88rem; }
+        .toc-panel ol ol { margin-top: 0.3rem; margin-bottom: 0.3rem; list-style-type: lower-alpha; }
+        .toc-panel li { margin-bottom: 0.3rem; line-height: 1.35; }
+        .toc-panel a { color: var(--text-main); text-decoration: none; }
+        .toc-panel a:hover { color: var(--accent-color); }
+        .toc-panel a.active { color: var(--accent-color); font-weight: 600; }
+        .toc-new { display: inline-block; margin-left: 0.3rem; padding: 0 0.45rem; border-radius: 999px; border: 1px solid var(--accent-color); color: var(--accent-color); font-size: 0.65rem; font-weight: 600; vertical-align: middle; }
+        .toc-toggle { flex: none; width: 34px; height: 56px; margin-top: 0.5rem; background-color: var(--card-bg); border: 1px solid #334155; border-left: none; border-radius: 0 8px 8px 0; color: var(--accent-color); cursor: pointer; box-shadow: 6px 6px 18px rgba(0,0,0,0.35); }
+        .toc-toggle:hover { color: var(--accent-hover); }
+        .toc-toggle i { transition: transform 0.3s ease; }
+        /* The tab is a child of the sliding box, so it moves with it; keep it on screen when collapsed */
+        .toc-float.collapsed .toc-toggle { transform: translateX(100%); }
+        .toc-float.collapsed .toc-toggle i { transform: rotate(180deg); }
+        @media (max-width: 600px) { .toc-panel { width: 230px; } }
+        @media (prefers-reduced-motion: reduce) { .toc-float, .toc-toggle i { transition: none; } }
     </style>
 </head>
 <body>
@@ -66,6 +75,34 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Floating table of contents: fixed on the left, collapses to just the arrow tab -->
+    <aside class="toc-float" id="contents" aria-label="On this page">
+        <nav class="toc-panel" id="toc-panel">
+            <p class="toc-title"><i class="fa-solid fa-list"></i> On this page</p>
+            <ol>
+                <li><a href="#key-contributions">Key Contributions</a></li>
+                <li><a href="#ui-evolution">UI/UX Evolution</a></li>
+                <li><a href="#dynamic-interface">Dynamic Interface &amp; Player Feedback</a></li>
+                <li><a href="#advanced-ui">Advanced UI Systems: Localization &amp; Keybinds</a></li>
+                <li><a href="#latest-updates">Latest Updates <span class="toc-new">New</span></a>
+                    <ol>
+                        <li><a href="#mana">Mana System &amp; HUD</a></li>
+                        <li><a href="#gem-tiers">Gem Quality Tiers, Merging &amp; Shrines</a></li>
+                        <li><a href="#gem-arrivals">&ldquo;Hellbent&rdquo; Gem Arrivals</a></li>
+                        <li><a href="#combat-feel">Combat Feel &amp; Level-Up Polish</a></li>
+                        <li><a href="#attunement">The Attunement Gem: Elemental Fighting Styles</a></li>
+                        <li><a href="#main-menu">Main Menu: Glowing Eyes &amp; Transition</a></li>
+                        <li><a href="#spawn-intro">Spawn Intro &amp; Camera Fixes</a></li>
+                    </ol>
+                </li>
+                <li><a href="#next-steps">Ongoing Development &amp; Next Steps</a></li>
+            </ol>
+        </nav>
+        <button type="button" class="toc-toggle" id="toc-toggle" aria-expanded="true" aria-controls="toc-panel" aria-label="Hide the contents list">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+    </aside>
 
     <section class="project-detail-section">
         <a href="index.html#projects" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
@@ -91,28 +128,6 @@
 
         <div class="project-body">
             <p><strong>Hellbent</strong> is an action RPG emphasizing complex combat mechanics, deep modular equipment, and challenging boss encounters. As a core programmer on the project, my responsibilities span both the underlying gameplay architecture and the player-facing user interfaces.</p>
-
-            <nav class="toc" id="contents" aria-label="On this page">
-                <p class="toc-title"><i class="fa-solid fa-list"></i> On this page</p>
-                <ol>
-                    <li><a href="#key-contributions">Key Contributions</a></li>
-                    <li><a href="#ui-evolution">UI/UX Evolution</a></li>
-                    <li><a href="#dynamic-interface">Dynamic Interface &amp; Player Feedback</a></li>
-                    <li><a href="#advanced-ui">Advanced UI Systems: Localization &amp; Keybinds</a></li>
-                    <li><a href="#latest-updates">Latest Updates <span class="toc-new">New</span></a>
-                        <ol>
-                            <li><a href="#mana">Mana System &amp; HUD</a></li>
-                            <li><a href="#gem-tiers">Gem Quality Tiers, Merging &amp; Shrines</a></li>
-                            <li><a href="#gem-arrivals">&ldquo;Hellbent&rdquo; Gem Arrivals</a></li>
-                            <li><a href="#combat-feel">Combat Feel &amp; Level-Up Polish</a></li>
-                            <li><a href="#attunement">The Attunement Gem: Elemental Fighting Styles</a></li>
-                            <li><a href="#main-menu">Main Menu: Glowing Eyes &amp; Transition</a></li>
-                            <li><a href="#spawn-intro">Spawn Intro &amp; Camera Fixes</a></li>
-                        </ol>
-                    </li>
-                    <li><a href="#next-steps">Ongoing Development &amp; Next Steps</a></li>
-                </ol>
-            </nav>
 
             <div style="margin: 3rem 0;">
                 <iframe width="100%" height="500" src="https://www.youtube.com/embed/2W4Hzh22zmk" title="Hellbent Gameplay Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></iframe>
@@ -348,8 +363,6 @@
         </div>
     </section>
 
-    <a href="#contents" class="toc-fab" aria-label="Back to the contents list"><i class="fa-solid fa-arrow-up"></i> Contents</a>
-
     <footer id="contact">
         <div class="social-links">
             <a href="https://github.com/benho612" target="_blank"><i class="fa-brands fa-github"></i></a>
@@ -358,6 +371,54 @@
         </div>
         <p class="copyright">&copy; 2026 Ben Ho. Built with passion.</p>
     </footer>
+
+    <script>
+        // Floating contents list: arrow expands/shrinks it, the current topic is highlighted as you scroll.
+        (function () {
+            var box = document.getElementById('contents');
+            var toggle = document.getElementById('toc-toggle');
+            var links = Array.prototype.slice.call(box.querySelectorAll('a[href^="#"]'));
+            var WIDE = 1500; // below this the box would sit on top of the page text, so it starts folded
+
+            function setOpen(open, remember) {
+                box.classList.toggle('collapsed', !open);
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                toggle.setAttribute('aria-label', open ? 'Hide the contents list' : 'Show the contents list');
+                toggle.querySelector('i').className = 'fa-solid fa-chevron-left';
+                if (remember) { try { localStorage.setItem('hellbentTocOpen', open ? '1' : '0'); } catch (e) {} }
+            }
+
+            var saved = null;
+            try { saved = localStorage.getItem('hellbentTocOpen'); } catch (e) {}
+            setOpen(saved === null ? window.innerWidth >= WIDE : saved === '1', false);
+
+            toggle.addEventListener('click', function () {
+                setOpen(box.classList.contains('collapsed'), true);
+            });
+
+            // On narrower screens the box overlaps the text, so fold it away after jumping somewhere.
+            links.forEach(function (a) {
+                a.addEventListener('click', function () {
+                    if (window.innerWidth < WIDE) setOpen(false, false);
+                });
+            });
+
+            // Highlight the topic currently on screen.
+            var targets = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+            function spy() {
+                var current = 0;
+                for (var i = 0; i < targets.length; i++) {
+                    if (targets[i] && targets[i].getBoundingClientRect().top <= 140) current = i;
+                }
+                // Near the bottom the last heading can't reach the top of the screen, so count it as reached.
+                if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = targets.length - 1;
+                links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
+            }
+            window.addEventListener('scroll', spy, { passive: true });
+            window.addEventListener('resize', spy);
+            spy();
+        })();
+    </script>
 
 </body>
 </html>
