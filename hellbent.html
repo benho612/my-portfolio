@@ -41,6 +41,19 @@
         .tuning-table td { color: var(--text-muted); }
         .tuning-table td:first-child { color: var(--text-main); font-weight: 600; white-space: nowrap; }
         .gem-icons { display: block; max-width: 420px; margin: 0 auto 1rem; image-rendering: pixelated; }
+
+        /* Table of contents: every topic is one click away; headings clear the fixed navbar when jumped to */
+        .project-body h3[id], .project-body h4[id], .toc { scroll-margin-top: 6rem; }
+        .toc { background-color: var(--card-bg); border: 1px solid #334155; border-radius: 8px; padding: 1.25rem 1.5rem; margin: 2rem 0; }
+        .toc-title { color: var(--accent-color); font-weight: 600; margin-bottom: 0.75rem; }
+        .toc ol { margin: 0 0 0 1.4rem; color: var(--text-muted); }
+        .toc ol ol { margin-top: 0.35rem; margin-bottom: 0.35rem; list-style-type: lower-alpha; }
+        .toc li { margin-bottom: 0.35rem; }
+        .toc a { color: var(--text-main); text-decoration: none; }
+        .toc a:hover { color: var(--accent-color); }
+        .toc-new { display: inline-block; margin-left: 0.4rem; padding: 0 0.5rem; border-radius: 999px; border: 1px solid var(--accent-color); color: var(--accent-color); font-size: 0.7rem; font-weight: 600; vertical-align: middle; }
+        .toc-fab { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 90; background: var(--card-bg); border: 1px solid #334155; color: var(--accent-color); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.55rem 0.9rem; border-radius: 999px; box-shadow: 0 6px 18px rgba(0,0,0,0.4); }
+        .toc-fab:hover { color: var(--accent-hover); }
     </style>
 </head>
 <body>
@@ -79,11 +92,33 @@
         <div class="project-body">
             <p><strong>Hellbent</strong> is an action RPG emphasizing complex combat mechanics, deep modular equipment, and challenging boss encounters. As a core programmer on the project, my responsibilities span both the underlying gameplay architecture and the player-facing user interfaces.</p>
 
+            <nav class="toc" id="contents" aria-label="On this page">
+                <p class="toc-title"><i class="fa-solid fa-list"></i> On this page</p>
+                <ol>
+                    <li><a href="#key-contributions">Key Contributions</a></li>
+                    <li><a href="#ui-evolution">UI/UX Evolution</a></li>
+                    <li><a href="#dynamic-interface">Dynamic Interface &amp; Player Feedback</a></li>
+                    <li><a href="#advanced-ui">Advanced UI Systems: Localization &amp; Keybinds</a></li>
+                    <li><a href="#latest-updates">Latest Updates <span class="toc-new">New</span></a>
+                        <ol>
+                            <li><a href="#mana">Mana System &amp; HUD</a></li>
+                            <li><a href="#gem-tiers">Gem Quality Tiers, Merging &amp; Shrines</a></li>
+                            <li><a href="#gem-arrivals">&ldquo;Hellbent&rdquo; Gem Arrivals</a></li>
+                            <li><a href="#combat-feel">Combat Feel &amp; Level-Up Polish</a></li>
+                            <li><a href="#attunement">The Attunement Gem: Elemental Fighting Styles</a></li>
+                            <li><a href="#main-menu">Main Menu: Glowing Eyes &amp; Transition</a></li>
+                            <li><a href="#spawn-intro">Spawn Intro &amp; Camera Fixes</a></li>
+                        </ol>
+                    </li>
+                    <li><a href="#next-steps">Ongoing Development &amp; Next Steps</a></li>
+                </ol>
+            </nav>
+
             <div style="margin: 3rem 0;">
                 <iframe width="100%" height="500" src="https://www.youtube.com/embed/2W4Hzh22zmk" title="Hellbent Gameplay Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></iframe>
             </div>
 
-            <h3>Key Contributions</h3>
+            <h3 id="key-contributions">Key Contributions</h3>
             <ul>
                 <li><strong>Controller Support:</strong> Implemented comprehensive controller support, ensuring seamless input mapping and intuitive navigation across all gameplay and menu systems.</li>
                 <li><strong>Modular Equipment Systems:</strong> Developed scalable inventory and equipment systems that allow for dynamic gear swapping and stat adjustments during gameplay.</li>
@@ -93,7 +128,7 @@
                 <li><strong>International Localization:</strong> Engineered robust localization systems utilizing the Unity Localization package to seamlessly support multiple languages, including German, Japanese, and Simplified Chinese for global accessibility.</li>
             </ul>
 
-            <h3>UI/UX Evolution</h3>
+            <h3 id="ui-evolution">UI/UX Evolution</h3>
             <p style="color: var(--text-muted); margin-bottom: 2rem;">A major focus of my work involved iterating on the game's interface to improve player clarity and thematic consistency. Below is a comparison showing the transition from early functional blockouts to the finalized, stylized UI.</p>
 
             <div class="ui-gallery">
@@ -122,7 +157,7 @@
                 </div>
             </div>
 
-            <h3>Dynamic Interface & Player Feedback</h3>
+            <h3 id="dynamic-interface">Dynamic Interface & Player Feedback</h3>
             <p style="color: var(--text-muted); margin-bottom: 2rem;">Beyond static layouts, I programmed dynamic UI behaviors to enhance immersion and provide clear, unobtrusive player feedback.</p>
 
             <div class="video-gallery">
@@ -138,7 +173,7 @@
                 </div>
             </div>
 
-            <h3>Advanced UI Systems: Localization & Keybinds</h3>
+            <h3 id="advanced-ui">Advanced UI Systems: Localization & Keybinds</h3>
             <p style="color: var(--text-muted); margin-bottom: 2rem;">Building scalable architecture is just as important as visual design. Below is a look at the robust systems I engineered for international localization and dynamic input mapping.</p>
 
             <div class="video-gallery">
@@ -154,11 +189,11 @@
                 </div>
             </div>
 
-            <h3>Latest Updates</h3>
+            <h3 id="latest-updates">Latest Updates</h3>
             <span class="update-badge">October 2026</span>
             <p style="color: var(--text-muted); margin-bottom: 1rem;">The past few weeks have been about turning Hellbent's moment-to-moment loop into something deeper and better-feeling: a mana economy, a crafting path for gems, a new passive gem that gives every elemental gauntlet its own fighting style, and a pass of polish across combat, menus and the first few seconds of every level. Here is what changed and how it works.</p>
 
-            <h4>Mana System &amp; HUD</h4>
+            <h4 id="mana">Mana System &amp; HUD</h4>
             <p style="color: var(--text-muted); margin-bottom: 1rem;">Skills used to draw from the stamina pool. I added a dedicated mana resource so skill use has its own budget and the stamina bar stays about melee and dodging.</p>
             <div class="ui-gallery">
                 <div class="ui-item wide">
@@ -174,7 +209,7 @@
                 <li><strong>Three new gems:</strong> <em>Arcane</em> (more maximum mana), <em>Wellspring</em> (faster regeneration) and <em>Siphon</em> (mana back on every kill). They plug into the same modifier pipeline as the existing stat gems and are wired into the Backpack prefab, so they carry across levels.</li>
             </ul>
 
-            <h4>Gem Quality Tiers, Merging &amp; Shrines</h4>
+            <h4 id="gem-tiers">Gem Quality Tiers, Merging &amp; Shrines</h4>
             <p style="color: var(--text-muted); margin-bottom: 1rem;">Every gem now has a quality tier, and players can craft their way up. This gives the reward menu a second decision: take a new gem, or merge toward a stronger one.</p>
             <div class="ui-gallery">
                 <div class="ui-item wide">
@@ -191,7 +226,7 @@
                 <li><strong>Localization:</strong> tier names and labels live under their own string keys in the Gem table, so they never collide with a gem's own title or description, and they are translated for all four supported languages.</li>
             </ul>
 
-            <h4>&ldquo;Hellbent&rdquo; Gem Arrivals</h4>
+            <h4 id="gem-arrivals">&ldquo;Hellbent&rdquo; Gem Arrivals</h4>
             <p style="color: var(--text-muted); margin-bottom: 1rem;">Reward gems used to simply drop onto the board. To match the game's name and look, they are now summoned one at a time in a burst of hellfire.</p>
             <div class="ui-gallery">
                 <div class="ui-item">
@@ -212,7 +247,7 @@
                 <li><strong>Bug hunt:</strong> an extra animation played on the first gem. The level-up button was opening the menu twice in one frame (a UnityEvent and a direct call), leaving an effect playing over a gem that had already been replaced. The menu now ignores a second open in the same frame, and a new sequence cancels any one still running.</li>
             </ul>
 
-            <h4>Combat Feel &amp; Level-Up Polish</h4>
+            <h4 id="combat-feel">Combat Feel &amp; Level-Up Polish</h4>
             <p style="color: var(--text-muted); margin-bottom: 1rem;">Hits needed to feel better. I built a small feedback layer that every melee hit and skill goes through, then tuned it by playing it.</p>
             <div class="ui-gallery">
                 <div class="ui-item wide">
@@ -230,7 +265,7 @@
                 <li><strong>Stuck-attack bug:</strong> if an attack animation was cut off (for example by landing mid-air attack), the player stayed locked in &ldquo;Attacking&rdquo; forever. I added a failsafe that notices the animator is back on locomotion and ends the attack.</li>
             </ul>
 
-            <h4>The Attunement Gem: Elemental Fighting Styles</h4>
+            <h4 id="attunement">The Attunement Gem: Elemental Fighting Styles</h4>
             <p style="color: var(--text-muted); margin-bottom: 1rem;">The Projectile gem already changes with the gauntlet's element. Attunement is a new <strong>passive</strong> skill gem that does the same for melee: it empowers the basic and heavy attacks of whichever gauntlet it is socketed into, and only that gauntlet's fist.</p>
             <div class="ui-gallery">
                 <div class="ui-item">
@@ -262,7 +297,7 @@
                 <li><strong>Content plumbing:</strong> the gem is data-driven (a passive flag on the skill gem asset), skipped by the cast and cooldown UI, restorable between levels through the Backpack, drops from the reward pool and chamber skill rewards, and is localized in four languages. Its icon is a recoloured version of the Projectile gem so the two read as one family.</li>
             </ul>
 
-            <h4>Main Menu: Glowing Eyes &amp; Transition</h4>
+            <h4 id="main-menu">Main Menu: Glowing Eyes &amp; Transition</h4>
             <div class="ui-gallery">
                 <div class="ui-item">
                     <img src="hellbent-menu.jpg" alt="The Hellbent main menu with the knight's eyes glowing red" loading="lazy">
@@ -285,7 +320,7 @@
                 <li><strong>Transition:</strong> pressing New Game or Continue blocks further input, fades a black overlay in over about 0.9 seconds, and only then starts the run or restores the checkpoint, so players can't double-fire a level load.</li>
             </ul>
 
-            <h4>Spawn Intro &amp; Camera Fixes</h4>
+            <h4 id="spawn-intro">Spawn Intro &amp; Camera Fixes</h4>
             <div class="ui-gallery">
                 <div class="ui-item">
                     <img src="hellbent-intro-reveal.jpg" alt="The knight being revealed from the head down by the teleport effect, seen from the front" loading="lazy">
@@ -304,7 +339,7 @@
                 <li><strong>Intro timing:</strong> about 1.7s for the reveal and a 1.4s eased orbit, with movement and combat locked until it finishes. The whole intro can be switched off, and its tilt and duration are exposed in the inspector.</li>
             </ul>
 
-            <h3>Ongoing Development &amp; Next Steps</h3>
+            <h3 id="next-steps">Ongoing Development &amp; Next Steps</h3>
             <p style="color: var(--text-muted); margin-bottom: 2rem;">Hellbent is an active, ongoing project, and the systems above are still being tuned through playtesting. Next up is broader accessibility support (including options for the new combat feedback and screen effects), more Attunement behaviours and shrine variants, and further polish on menu interactions with advanced tweening transitions so the interface feels as fluid and responsive as the combat itself.</p>
 
             <div style="margin-top: 4rem; text-align: center;">
@@ -312,6 +347,8 @@
             </div>
         </div>
     </section>
+
+    <a href="#contents" class="toc-fab" aria-label="Back to the contents list"><i class="fa-solid fa-arrow-up"></i> Contents</a>
 
     <footer id="contact">
         <div class="social-links">
